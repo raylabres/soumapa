@@ -65,12 +65,13 @@ def cria_base():
             colunas = ['CEP', 'Logradouro', 'Bairro', 'Cidade', 'Estado']
             df.columns = colunas
             df.to_excel(f'{diretorio}/temp/dados_exportados.xlsx', sheet_name='Consultas',index=False)
-    except:
+
+    except Exception as erro:
         try:
             df = pd.DataFrame()
             df.to_excel(f'{diretorio}/temp/dados_exportados.xlsx', index=False)
         except:
-            erro = 'erro'
+             mensagem_erro = erro
 
 def apaga_arquivos():
     try:

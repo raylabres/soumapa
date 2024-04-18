@@ -2,6 +2,7 @@ from tkinter import *
 from customtkinter import *
 import back
 import os
+import time
 
 back.baixar_imagem() # Baixa as imagens
 
@@ -113,9 +114,10 @@ def mostrar_tela_principal():
     def mensagem_exportada():
         arquivos = os.listdir(f'{diretorio}/temp/')
         for arquivo in arquivos:
-            if 'dados_exportados' in arquivo:
+            if 'dados' in arquivo:
                 sucesso_exportacao = CTkLabel(master=tela_principal, text='Arquivo exportado com sucesso!', font=fonte_titulo, text_color=cor_verde)
                 sucesso_exportacao.place(x=430, y=450, anchor='center')
+
 
     def remover_labels_existents():
         for widget in campo_dados.winfo_children():
@@ -133,7 +135,7 @@ def mostrar_tela_principal():
     caixa_cep.place(relx=0.5, rely=0.5, anchor='center')
     botao_buscar = CTkButton(master=tela_principal, text='Buscar', width=200, height=50, corner_radius=32, font=fonte, fg_color='#414042', hover_color='#000000', bg_color='transparent', command=obter_cep)
     botao_buscar.place(x=170, y=350)
-    botao_exportar = CTkButton(master=tela_principal, text='Exportar Excel', width=200, height=50, corner_radius=32, font=fonte, fg_color='#414042', hover_color='#000000', bg_color='transparent', command=lambda: (back.cria_base(), mensagem_exportada()))
+    botao_exportar = CTkButton(master=tela_principal, text='Exportar Excel', width=200, height=50, corner_radius=32, font=fonte, fg_color='#414042', hover_color='#000000', bg_color='transparent', command=lambda: (mensagem_exportada(), back.cria_base()))
     botao_exportar.place(x=430, y=350)
 
 
